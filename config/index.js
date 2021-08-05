@@ -1,10 +1,10 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('./db');
 
-const userModel = require('../Models/user-model')(sequelize,DataTypes);
-const postModel = require('../Models/post-model')(sequelize,DataTypes);
-const likeModel = require('../Models/like-model')(sequelize,DataTypes);
-const followModel = require('../Models/follow-model')(sequelize,DataTypes);
+const userModel = require('../models/user-model')(sequelize,DataTypes);
+const postModel = require('../models/post-model')(sequelize,DataTypes);
+const likeModel = require('../models/like-model')(sequelize,DataTypes);
+const followModel = require('../models/follow-model')(sequelize,DataTypes);
 const db = {};
 
 db.sequelize=sequelize;
