@@ -13,15 +13,19 @@ db.userModel=userModel;
 db.postModel=postModel;
 db.likeModel=likeModel;
 db.followModel=followModel;
-db.sequelize.sync({force:false}).then(()=>{
+db.sequelize.sync({force:true}).then(()=>{
     console.log('DB synched');
 }).catch((err)=>{
     console.log("Synching error: "+err);
 });
 
-db.userModel.hasMany(db.postModel,{foreignKey:'userId'});
-db.postModel.belongsTo(db.userModel,{foreignKey:'userId'});
+db.userModel.hasMany(db.postModel,{foreignKey:'user_id'});
+db.postModel.belongsTo(db.userModel,{foreignKey:'user_id'});
 
-db.userModel.hasMany(db.followModel,{foreignKey:'followedBy'});
-db.userModel.hasMany(db.followModel,{foreignKey:'followedTo'});
+db.userModel.hasMany(db.followModel,{foreignKey:'followed_by'});
+db.userModel.hasMany(db.followModel,{foreignKey:'followed_to'});
+
+db.postModel.hasMany(db.likeModel,{foreignKey:'post_id'});
+db.userModel.hasMany(db.likeModel,{foreignKey:'user_id'});
+
 module.exports=db;

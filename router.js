@@ -10,10 +10,10 @@ router.post('/like',likePost);
 
 router.post('/follow',followUser);
 
-router.post('/getFollowers',getFollow);
+router.get('/getFollowers',getFollow);
 
-router.post('/getPosts',getPosts);
+router.get('/getPosts',getPosts);
 
-router.post('/getUserFromPost',getUserFromPost)
+router.get('/getUserFromPost',getUserFromPost)
 
 module.exports=router;

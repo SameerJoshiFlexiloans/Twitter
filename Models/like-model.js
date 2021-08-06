@@ -5,11 +5,11 @@ module.exports = (sequelize,DataTypes)=>{
             autoIncrement:true,
             primaryKey:true
         },
-        userId:{
+        user_id:{
             type:DataTypes.INTEGER,
             foreignKey:true
         },
-        postId:{
+        post_id:{
             type:DataTypes.INTEGER,
             foreignKey:true
         }

@@ -5,10 +5,10 @@ module.exports = (sequelize,DataTypes)=>{
             autoIncrement:true,
             primaryKey:true
         },
-        followedTo:{
+        followed_to:{
             type:DataTypes.INTEGER,
         },
-        followedBy:{
+        followed_by:{
             type:DataTypes.INTEGER,
             foreignKey:true
         }

@@ -1,6 +1,6 @@
 module.exports=(sequelize,DataTypes)=>{
     const posts=sequelize.define('posts',{
-        postId:{
+        post_id:{
             type:DataTypes.INTEGER,
             primaryKey:true,
             autoIncrement:true
@@ -8,7 +8,7 @@ module.exports=(sequelize,DataTypes)=>{
         content:{
             type:DataTypes.STRING(1000)
         },
-        userId:{
+        user_id:{
             type:DataTypes.INTEGER,
             foreinKey:true
         }
