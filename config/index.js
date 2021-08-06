@@ -19,4 +19,9 @@ db.sequelize.sync({force:false}).then(()=>{
     console.log("Synching error: "+err);
 });
 
+db.userModel.hasMany(db.postModel,{foreignKey:'userId'});
+db.postModel.belongsTo(db.userModel,{foreignKey:'userId'});
+
+db.userModel.hasMany(db.followModel,{foreignKey:'followedBy'});
+db.userModel.hasMany(db.followModel,{foreignKey:'followedTo'});
 module.exports=db;

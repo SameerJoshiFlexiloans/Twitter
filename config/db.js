@@ -10,10 +10,13 @@ const sequelize = new Sequelize('Users','root','root@1234',{
     }
 });
 
-sequelize.authenticate().then(()=>{
-    console.log("DB connected");
-}).catch((err)=>{
-    console.log("Error: "+err);
-});
+async function authenticateDB(){
+    await sequelize.authenticate().then(()=>{
+        console.log("DB connected");
+    }).catch((err)=>{
+        console.log("Error: "+err);
+    });
+}
 
+authenticateDB();
 module.exports=sequelize;

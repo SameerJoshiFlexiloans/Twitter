@@ -1,14 +1,16 @@
 module.exports=(sequelize,DataTypes)=>{
-    const posts=sequelize.define('Posts',{
+    const posts=sequelize.define('posts',{
+        postId:{
+            type:DataTypes.INTEGER,
+            primaryKey:true,
+            autoIncrement:true
+        },
         content:{
             type:DataTypes.STRING(1000)
         },
-        email:{
-            type:DataTypes.STRING
-        },
-        likes:{
+        userId:{
             type:DataTypes.INTEGER,
-            defaultValue:0
+            foreinKey:true
         }
     });
     return posts;

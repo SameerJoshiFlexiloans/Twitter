@@ -1,20 +1,19 @@
 const db = require('../config');
 
 exports.registerUser=async (req,res)=>{
-    let {firstname,lastname,email}=req.body;
+    let {firstname,email}=req.body;
     await db.userModel.create({
         firstname:firstname,
-        lastname:lastname,
         email:email
     });
     res.send(req.body);
 }
 
 exports.postData = async (req,res)=>{
-    let {content,email} = req.body;
+    let {content,userId} = req.body;
     await db.postModel.create({
         content:content,
-        email:email
+        userId:userId
     });
     res.send(req.body);
 }
@@ -44,7 +43,30 @@ exports.followUser = async (req,res)=>{
 }
 
 exports.getFollow = async (req,res)=>{
-    let {email}=req.body;
-    let followers = await db.followModel.findAll({where:{followedTo:email}});
-    res.send(followers.map(follow=>follow.followedBy));
+    let {userValue}=req.body;
+    let followers = await db.userModel.findAll({include:{
+            model:db.followModel,
+            where:{followedBy:1}
+        }
+    });
+    res.send(followers);
+}
+
+exports.getPosts = async (req,res)=>{
+    let {userId} = req.body;
+    let posts = await db.userModel.findAll({include:{
+        model:db.postModel
+    },where:{userId:userId}});
+    res.send(posts);
+}
+
+exports.getUserFromPost = async (req,res)=>{
+    let {postId} = req.body;
+    let users = await db.postModel.findAll({include: [{
+        model: db.userModel,
+        where: {
+            userId: 1
+        },
+    }]});
+    res.send(users);
 }

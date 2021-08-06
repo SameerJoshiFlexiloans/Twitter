@@ -1,12 +1,18 @@
 module.exports = (sequelize,DataTypes)=>{
-    const users = sequelize.define('Likes',{
+    const users = sequelize.define('likes',{
         id:{
             type:DataTypes.INTEGER,
             autoIncrement:true,
             primaryKey:true
         },
-        email:DataTypes.STRING,
-        postId:DataTypes.INTEGER
+        userId:{
+            type:DataTypes.INTEGER,
+            foreignKey:true
+        },
+        postId:{
+            type:DataTypes.INTEGER,
+            foreignKey:true
+        }
     });
     return users;
 }
