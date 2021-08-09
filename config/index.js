@@ -13,7 +13,7 @@ db.userModel=userModel;
 db.postModel=postModel;
 db.likeModel=likeModel;
 db.followModel=followModel;
-db.sequelize.sync({force:true}).then(()=>{
+db.sequelize.sync({force:false}).then(()=>{
     console.log('DB synched');
 }).catch((err)=>{
     console.log("Synching error: "+err);

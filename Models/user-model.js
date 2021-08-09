@@ -10,7 +10,14 @@ module.exports = (sequelize,DataTypes)=>{
         },
         email:{
             type:DataTypes.STRING,
-        }
+        },
+    },{
+        indexes:[
+            {
+                unique:true,
+                fields:['email']
+            }
+        ]
     });
     return users;
 }
