@@ -16,7 +16,7 @@ db.followModel=followModel;
 db.sequelize.sync({force:false}).then(()=>{
     console.log('DB synched');
 }).catch((err)=>{
-    console.log("Synching error: "+err);
+    console.log("Synching error: there are many errors in this "+err);
 });
 
 db.userModel.hasMany(db.postModel,{foreignKey:'user_id'});
